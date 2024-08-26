@@ -16,25 +16,12 @@ class _HomeScreenState extends State<HomeScreen> {
   int seconds = 0;
   Timer? timer;
 
-  // @override
-  // void initState() {
-  //   super.initState();
-  //   timer = Timer.periodic(const Duration(seconds: 1), (timer) {
-  //     setState(() {
-  //       seconds--;
-  //       if(seconds==0){
-  //         timer.cancel();
-  //       }
-  //     });
-  //   });
-  // }
+
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.blue,
-      ),
+      appBar: appBar,
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -47,8 +34,7 @@ class _HomeScreenState extends State<HomeScreen> {
               height: 50,
             ),
             ElevatedButton(
-                onPressed: () {
-               showDialog(context: context, builder: (p0) => _pickTime());},
+                onPressed: () => showDialog(context: context, builder: (p0) => _pickTime()),
                 child: const Text("Ввести время"))
           ],
         ),
@@ -67,11 +53,9 @@ class _HomeScreenState extends State<HomeScreen> {
 
   Widget _pickTime() {
     return AlertDialog(
-      content: Container(
-        alignment: Alignment.center,
+      content: SizedBox(
         height: 200,
         width: 400,
-        color: Colors.white,
         child: CupertinoTimerPicker(
           initialTimerDuration: const Duration(hours: 0, minutes: 0, seconds: 0),
           mode: CupertinoTimerPickerMode.hms,
@@ -87,3 +71,8 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 }
+
+
+AppBar appBar = AppBar(
+  backgroundColor: Colors.blue,
+);

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_localization/flutter_localization.dart';
+// ignore: depend_on_referenced_packages
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'home_screen.dart';
 
 void main() {
@@ -11,13 +12,17 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final FlutterLocalization localization = FlutterLocalization.instance;
+    // final FlutterLocalization localization = FlutterLocalization.instance;
 
-    return MaterialApp(
-      supportedLocales: const [Locale('ru')],
-      localizationsDelegates: localization.localizationsDelegates,
+    return const MaterialApp(
+      supportedLocales:  [Locale('ru')],
+      localizationsDelegates:  [
+    GlobalMaterialLocalizations.delegate,
+    GlobalWidgetsLocalizations.delegate,
+    GlobalCupertinoLocalizations.delegate,
+  ],
       debugShowCheckedModeBanner: false,
-      home: const HomeScreen(),
+      home: HomeScreen(),
     );
   }
 }
